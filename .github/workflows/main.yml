@@ -28,7 +28,7 @@ jobs:
 
       - name: Updating data and cleaning
         run: |
-          source('script.R')
+          source('scraper.R')
         shell: Rscript {0}
 
       - name: Commit Changes
