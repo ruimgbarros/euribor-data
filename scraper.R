@@ -39,7 +39,11 @@ euribor_month <- df %>%
   mutate(date = ymd(date, truncated = 1)) %>%
   arrange(date)
 
+updated_pt_text <- glue('{day(Sys.time())} de {month(Sys.time(), label = TRUE, abbr = FALSE, locale="pt_PT")} de {year(Sys.time())}')
+
 data <- list(
+  updated_time = Sys.time(),
+  updated_string = updated_pt_text,
   all_euribor = df,
   euribor_month = euribor_month
 )
