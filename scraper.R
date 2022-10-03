@@ -44,6 +44,7 @@ get_max_date <- df %>% filter(date == max(date)) %>% pull(date)
 updated_pt_text <- glue('{day(get_max_date)} de {month(get_max_date, label = TRUE, abbr = FALSE, locale="pt_PT")} de {year(get_max_date)}')
 
 
+
 data <- list(
   updated_time = Sys.time(),
   updated_string = updated_pt_text,
