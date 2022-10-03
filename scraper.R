@@ -39,7 +39,10 @@ euribor_month <- df %>%
   mutate(date = ymd(date, truncated = 1)) %>%
   arrange(date)
 
-updated_pt_text <- glue('{day(Sys.time())} de {month(Sys.time(), label = TRUE, abbr = FALSE, locale="pt_PT")} de {year(Sys.time())}')
+get_max_date <- df %>% filter(date == max(date)) %>% pull(date)
+
+updated_pt_text <- glue('{day(get_max_date)} de {month(get_max_date, label = TRUE, abbr = FALSE, locale="pt_PT")} de {year(get_max_date)}')
+
 
 data <- list(
   updated_time = Sys.time(),
