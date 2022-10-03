@@ -48,6 +48,9 @@ euribor_month <- df %>%
   mutate(date = ymd(date, truncated = 1)) %>%
   arrange(date)
 
+df <- df %>% 
+  filter(!is.na(euribor_3meses))
+
 
 
 updated_pt_text <- glue('{day(Sys.time())} de {month(Sys.time(), label = TRUE, abbr = FALSE, locale="pt_PT")} de {year(Sys.time())}')
