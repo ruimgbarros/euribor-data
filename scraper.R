@@ -27,6 +27,15 @@ df <- read_csv("https://www.bde.es//webbde/es/estadis/infoest/series/ti_1_7.csv"
   mutate(date = gsub("NOV", "11", date)) %>%
   mutate(date = dmy(date))
 
+get_max_date <- df %>% filter(date == max(date)) %>% pull(date)
+
+place_holder <- data.frame(
+  date = Sys.Date()
+)
+
+df <- df %>% 
+  bind_rows(place_holder)
+
 
 euribor_month <- df %>%
   mutate(mes = month(date),
@@ -39,7 +48,7 @@ euribor_month <- df %>%
   mutate(date = ymd(date, truncated = 1)) %>%
   arrange(date)
 
-get_max_date <- df %>% filter(date == max(date)) %>% pull(date)
+
 
 updated_pt_text <- glue('{day(Sys.time())} de {month(Sys.time(), label = TRUE, abbr = FALSE, locale="pt_PT")} de {year(Sys.time())}')
 
