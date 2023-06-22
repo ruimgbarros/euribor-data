@@ -3,7 +3,7 @@ library(lubridate)
 library(glue)
 library(jsonlite)
 
-df <- read_csv("https://www.bde.es//webbde/es/estadis/infoest/series/ti_1_7.csv", skip = 2) %>%
+df <- read_csv("https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/ti_1_7.csv", skip = 2) %>%
   select(`ALIAS DE LA SERIE`,TI_1_7.5, TI_1_7.6, TI_1_7.7) %>%
   rename("date" = "ALIAS DE LA SERIE",
          "euribor_3meses" = "TI_1_7.5",
