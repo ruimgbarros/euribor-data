@@ -47,7 +47,8 @@ euribor_month <- df %>%
             euribor_1ano = mean(euribor_1ano, na.rm = T)) %>%
   mutate(date = glue("{ano} {mes}")) %>%
   mutate(date = ymd(date, truncated = 1)) %>%
-  arrange(date) 
+  arrange(date) %>% 
+  filter(!is.na(euribor_3meses))
 
 df <- df %>% 
   filter(!is.na(euribor_3meses))
